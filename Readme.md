@@ -13,6 +13,8 @@
 
 模型地址：https://www.modelscope.cn/models/baiyu96/career_coach/summary
 
+openXLab体验地址：https://openxlab.org.cn/apps/detail/baiyu/career_caoch
+
 ## 什么是职场焦虑
 
 职场焦虑被定义为员工在工作环境中对完成工作任务时体验到的紧张和焦虑，作为一种由工作领域引发的特定情绪，职场焦虑反映了[在执行工作任务时]的情绪体验[2].职场焦虑主要聚焦于职场领域，是关于员工对[工作绩效及工作完成度]的担忧，具有明显的[诱因及指向性]，且这种[焦虑的情绪体验]会随着[任务结束或绩效达成]而逐渐降低甚至消失。
@@ -40,5 +42,5 @@
 ## 部署
 
 通过OpenXLab进行部署
-部署文档参考
-https://aicarrier.feishu.cn/docx/MQH6dygcKolG37x0ekcc4oZhnCe
+
+![1707004327125](assets/1707004327125.png)
