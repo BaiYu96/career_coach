@@ -40,3 +40,5 @@
 ## 部署
 
 通过OpenXLab进行部署
+部署文档参考
+https://aicarrier.feishu.cn/docx/MQH6dygcKolG37x0ekcc4oZhnCe
