@@ -9,7 +9,9 @@
 
 ## 仓库地址
 
-[career_coach](https://github.com/BaiYu96/career_coach)
+代码仓库地址：[career_coach](https://github.com/BaiYu96/career_coach)
+
+模型地址：https://www.modelscope.cn/models/baiyu96/career_coach/summary
 
 ## 什么是职场焦虑
 
