@@ -10,7 +10,7 @@ from tools.transformers.interface import GenerationConfig, generate_interactive
 
 
 model_id = 'baiyu96/career_coach'
-model_dir = snapshot_download(model_id,  revision='v0.1.0')
+model_dir = snapshot_download(model_id,  revision='v0.2.0')
 
 
 
