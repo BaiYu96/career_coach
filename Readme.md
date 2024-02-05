@@ -9,11 +9,17 @@
 
 ## 仓库地址
 
+基础模型：[InternLM](https://github.com/InternLM/InternLM/)
+
 代码仓库地址：[career_coach](https://github.com/BaiYu96/career_coach)
 
 模型地址：https://www.modelscope.cn/models/baiyu96/career_coach/summary
 
 openXLab体验地址：https://openxlab.org.cn/apps/detail/baiyu/career_caoch
+
+## 更新日志
+
+
 
 ## 什么是职场焦虑
 
