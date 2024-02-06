@@ -1,5 +1,7 @@
 # 职场教练
 
+![](./assets/CareerCoach.jpg)
+
 应对职场上的心理焦虑，帮助在职场上获得更好的提升~
 
 我们的智能小助手名字叫职灵，你也可以叫她为灵灵。英文名字叫cc~
@@ -8,9 +10,21 @@
 
 整体是一个心，表示心理学。里面掏空一个有带有拟人化表情的小猫，赋予一些情感特征。表情代表so easy，这都不是事~
 
-![](./imgs/cc.png)
+<html>
+  <table style="margin-left: auto; margin-right: auto;">
+    <tr>
+      <td>
+        <img src="./imgs/cc.png">
+      </td>
+      <td>
+        <img src="./imgs/cc-2.png">
+      </td>
+    </tr>
+  </table>
+</html>
 
-![](./imgs/cc-2.png)
+
+
 
 ## 成员
 
