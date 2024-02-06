@@ -81,4 +81,5 @@ openXLab体验地址：https://openxlab.org.cn/apps/detail/baiyu/career_caoch
 
 通过OpenXLab进行部署
 
-![1707004327125](assets/1707004327125.png)
+![chat2cc](assets/chat2cc.png)
+
