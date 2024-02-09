@@ -47,7 +47,8 @@ openXLab体验地址：https://openxlab.org.cn/apps/detail/baiyu/career_caoch
 
 * [x] 基本问答交互
 * [x] 模型自我定位认知
-* [ ] 整理多轮对话数据
+* [x] 通过smile模型增强模型在心理学范畴的能力
+* [ ] 整理自由多轮对话数据数据集
 * [ ] 外挂心理学知识知识库
 * [ ] 收集真实的职场焦虑心理治疗案例
 * [ ] 整理对应的训练数据
@@ -83,3 +84,15 @@ openXLab体验地址：https://openxlab.org.cn/apps/detail/baiyu/career_caoch
 
 ![chat2cc](assets/chat2cc.png)
 
+##引用
+
+```
+@misc{qiu2023smile,
+      title={SMILE: Single-turn to Multi-turn Inclusive Language Expansion via ChatGPT for Mental Health Support},
+      author={Huachuan Qiu and Hongliang He and Shuai Zhang and Anqi Li and Zhenzhong Lan},
+      year={2023},
+      eprint={2305.00450},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
