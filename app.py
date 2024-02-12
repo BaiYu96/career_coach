@@ -78,7 +78,7 @@ def main():
     print("load model end.")
 
     user_avator = "./imgs/user.png"
-    robot_avator = "./imgs/cc.png"
+    robot_avator = "./imgs/cc-2.png"
 
     st.title("职场教练")
 
