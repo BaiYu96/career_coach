@@ -43,6 +43,7 @@ openXLab体验地址：https://openxlab.org.cn/apps/detail/baiyu/career_caoch
 
 ## 更新日志
 * 20240202-首个版本发布
+* 20240214-v0.3.0模型，增加smile训练数据
 ## 功能列表
 
 * [x] 基本问答交互
@@ -83,6 +84,11 @@ openXLab体验地址：https://openxlab.org.cn/apps/detail/baiyu/career_caoch
 通过OpenXLab进行部署
 
 ![chat2cc](assets/chat2cc.png)
+
+## 数据集
+* 自有数据集
+* 公开数据集
+    * [smile](https://github.com/qiuhuachuan/smile)
 
 ##引用
 
