@@ -23,13 +23,14 @@ class GenerationConfig:
 
 @torch.inference_mode()
 def generate_interactive(
-    model, 
+    model,
     tokenizer,
     prompt,
     generation_config: Optional[GenerationConfig] = None,
     logits_processor: Optional[LogitsProcessorList] = None,
     stopping_criteria: Optional[StoppingCriteriaList] = None,
-    prefix_allowed_tokens_fn: Optional[Callable[[int, torch.Tensor], List[int]]] = None,
+    prefix_allowed_tokens_fn: Optional[Callable[[int, torch.Tensor],
+                                                List[int]]] = None,
     additional_eos_token_id: Optional[int] = None,
     **kwargs,
 ):
@@ -48,7 +49,8 @@ def generate_interactive(
         eos_token_id = [eos_token_id]
     if additional_eos_token_id is not None:
         eos_token_id.append(additional_eos_token_id)
-    has_default_max_length = kwargs.get("max_length") is None and generation_config.max_length is not None
+    has_default_max_length = kwargs.get(
+        "max_length") is None and generation_config.max_length is not None
     if has_default_max_length and generation_config.max_new_tokens is None:
         warnings.warn(
             f"Using `max_length`'s default ({generation_config.max_length}) to control the generation length. "
@@ -57,7 +59,8 @@ def generate_interactive(
             UserWarning,
         )
     elif generation_config.max_new_tokens is not None:
-        generation_config.max_length = generation_config.max_new_tokens + input_ids_seq_length
+        generation_config.max_length = generation_config.max_new_tokens + \
+                                       input_ids_seq_length
         if not has_default_max_length:
             logger.warn(
                 f"Both `max_new_tokens` (={generation_config.max_new_tokens}) and `max_length`(="
@@ -76,8 +79,10 @@ def generate_interactive(
         )
 
     # 2. Set generation parameters if not already defined
-    logits_processor = logits_processor if logits_processor is not None else LogitsProcessorList()
-    stopping_criteria = stopping_criteria if stopping_criteria is not None else StoppingCriteriaList()
+    logits_processor = logits_processor if logits_processor is not None \
+        else LogitsProcessorList()
+    stopping_criteria = stopping_criteria if stopping_criteria is not None \
+        else StoppingCriteriaList()
 
     logits_processor = model._get_logits_processor(
         generation_config=generation_config,
@@ -88,14 +93,15 @@ def generate_interactive(
     )
 
     stopping_criteria = model._get_stopping_criteria(
-        generation_config=generation_config, stopping_criteria=stopping_criteria
-    )
+        generation_config=generation_config,
+        stopping_criteria=stopping_criteria)
     logits_warper = model._get_logits_warper(generation_config)
 
     unfinished_sequences = input_ids.new(input_ids.shape[0]).fill_(1)
     scores = None
     while True:
-        model_inputs = model.prepare_inputs_for_generation(input_ids, **model_kwargs)
+        model_inputs = model.prepare_inputs_for_generation(
+            input_ids, **model_kwargs)
         # forward pass to get next token
         outputs = model(
             **model_inputs,
@@ -120,10 +126,10 @@ def generate_interactive(
         # update generated ids, model inputs, and length for next step
         input_ids = torch.cat([input_ids, next_tokens[:, None]], dim=-1)
         model_kwargs = model._update_model_kwargs_for_generation(
-            outputs, model_kwargs, is_encoder_decoder=False
-        )
-        unfinished_sequences = unfinished_sequences.mul((min(next_tokens != i for i in eos_token_id)).long())
-        
+            outputs, model_kwargs, is_encoder_decoder=False)
+        unfinished_sequences = unfinished_sequences.mul(
+            (min(next_tokens != i for i in eos_token_id)).long())
+
         output_token_ids = input_ids[0].cpu().tolist()
         output_token_ids = output_token_ids[input_length:]
         for each_eos_token_id in eos_token_id:
@@ -132,6 +138,8 @@ def generate_interactive(
         response = tokenizer.decode(output_token_ids)
 
         yield response
-        # stop when each sentence is finished, or if we exceed the maximum length
-        if unfinished_sequences.max() == 0 or stopping_criteria(input_ids, scores):
+        # stop when each sentence is finished
+        # or if we exceed the maximum length
+        if unfinished_sequences.max() == 0 or stopping_criteria(
+                input_ids, scores):
             break
