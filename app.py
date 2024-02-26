@@ -50,9 +50,10 @@ def prepare_generation_config():
     return generation_config
 
 
-user_prompt = "<|User|>:{user}\n"
-robot_prompt = "<|Bot|>:{robot}<eoa>\n"
-cur_query_prompt = "<|User|>:{user}<eoh>\n<|Bot|>:"
+user_prompt = '<|im_start|>user\n{user}<|im_end|>\n'
+robot_prompt = '<|im_start|>assistant\n{robot}<|im_end|>\n'
+cur_query_prompt = '<|im_start|>user\n{user}<|im_end|>\n\
+    <|im_start|>assistant\n'
 
 
 def combine_history(prompt):
