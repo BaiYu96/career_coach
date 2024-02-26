@@ -56,6 +56,24 @@ openXLab体验地址：https://openxlab.org.cn/apps/detail/baiyu/career_caoch
 * [ ] 整理对应的训练数据
 * [ ] 通过智能体框架进一步提高职场教练大模型能力
 
+## 快速开始
+
+```
+# 下载源代码
+git clone https://github.com/BaiYu96/career_coach
+
+cd career_coach
+
+# 安装依赖
+pip install -r requirements.txt
+
+# 启动demo示例
+python start.py
+```
+
+> 如果使用的是v0.3.0的模型，请记得修改`start.py`中启动的文件为`app_internlm.py`
+
+
 ## 什么是职场焦虑
 
 职场焦虑被定义为员工在工作环境中对完成工作任务时体验到的紧张和焦虑，作为一种由工作领域引发的特定情绪，职场焦虑反映了[在执行工作任务时]的情绪体验[2].职场焦虑主要聚焦于职场领域，是关于员工对[工作绩效及工作完成度]的担忧，具有明显的[诱因及指向性]，且这种[焦虑的情绪体验]会随着[任务结束或绩效达成]而逐渐降低甚至消失。
