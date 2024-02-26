@@ -34,11 +34,11 @@ def generate_interactive(
     additional_eos_token_id: Optional[int] = None,
     **kwargs,
 ):
-    inputs = tokenizer([prompt], padding=True, return_tensors="pt")
-    input_length = len(inputs["input_ids"][0])
+    inputs = tokenizer([prompt], padding=True, return_tensors='pt')
+    input_length = len(inputs['input_ids'][0])
     for k, v in inputs.items():
         inputs[k] = v.cuda()
-    input_ids = inputs["input_ids"]
+    input_ids = inputs['input_ids']
     batch_size, input_ids_seq_length = input_ids.shape[0], input_ids.shape[-1]
     if generation_config is None:
         generation_config = model.generation_config
@@ -50,17 +50,20 @@ def generate_interactive(
     if additional_eos_token_id is not None:
         eos_token_id.append(additional_eos_token_id)
     has_default_max_length = kwargs.get(
-        "max_length") is None and generation_config.max_length is not None
+        'max_length') is None and generation_config.max_length is not None
     if has_default_max_length and generation_config.max_new_tokens is None:
         warnings.warn(
-            f"Using `max_length`'s default ({generation_config.max_length}) to control the generation length. "
-            "This behaviour is deprecated and will be removed from the config in v5 of Transformers -- we"
-            " recommend using `max_new_tokens` to control the maximum length of the generation.",
+            f"Using 'max_length''s default ({repr(generation_config.max_length)}) \
+                to control the generation length. "
+            'This behaviour is deprecated and will be removed from the \
+                config in v5 of Transformers -- we'
+            ' recommend using `max_new_tokens` to control the maximum \
+                length of the generation.',
             UserWarning,
         )
     elif generation_config.max_new_tokens is not None:
         generation_config.max_length = generation_config.max_new_tokens + \
-                                       input_ids_seq_length
+            input_ids_seq_length
         if not has_default_max_length:
             logger.warn(
                 f"Both `max_new_tokens` (={generation_config.max_new_tokens}) and `max_length`(="
@@ -71,7 +74,7 @@ def generate_interactive(
             )
 
     if input_ids_seq_length >= generation_config.max_length:
-        input_ids_string = "input_ids"
+        input_ids_string = 'input_ids'
         logger.warning(
             f"Input length of {input_ids_string} is {input_ids_seq_length}, but `max_length` is set to"
             f" {generation_config.max_length}. This can lead to unexpected behavior. You should consider"
