@@ -10,7 +10,7 @@ from tools.transformers.interface import GenerationConfig, generate_interactive
 
 
 model_id = 'baiyu96/career_coach'
-model_dir = snapshot_download(model_id,  revision='v0.4.0')
+model_dir = snapshot_download(model_id,  revision='v0.3.0')
 
 
 
@@ -50,10 +50,9 @@ def prepare_generation_config():
     return generation_config
 
 
-user_prompt = '<|im_start|>user\n{user}<|im_end|>\n'
-robot_prompt = '<|im_start|>assistant\n{robot}<|im_end|>\n'
-cur_query_prompt = '<|im_start|>user\n{user}<|im_end|>\n\
-    <|im_start|>assistant\n'
+user_prompt = "<|User|>:{user}\n"
+robot_prompt = "<|Bot|>:{robot}<eoa>\n"
+cur_query_prompt = "<|User|>:{user}<eoh>\n<|Bot|>:"
 
 
 def combine_history(prompt):
@@ -74,9 +73,9 @@ def combine_history(prompt):
 
 def main():
     # torch.cuda.empty_cache()
-    print('load model begin.')
+    print("load model begin.")
     model, tokenizer = load_model()
-    print('load model end.')
+    print("load model end.")
 
     user_avator = "./imgs/user.png"
     robot_avator = "./imgs/cc-2.png"
@@ -86,28 +85,24 @@ def main():
     generation_config = prepare_generation_config()
 
     # Initialize chat history
-    if 'messages' not in st.session_state:
+    if "messages" not in st.session_state:
         st.session_state.messages = []
 
     # Display chat messages from history on app rerun
     for message in st.session_state.messages:
-        with st.chat_message(message['role'], avatar=message.get('avatar')):
-            st.markdown(message['content'])
+        with st.chat_message(message["role"], avatar=message.get("avatar")):
+            st.markdown(message["content"])
 
     # Accept user input
-    if prompt := st.chat_input('What is up?'):
+    if prompt := st.chat_input("What is up?"):
         # Display user message in chat message container
-        with st.chat_message('user', avatar=user_avator):
+        with st.chat_message("user", avatar=user_avator):
             st.markdown(prompt)
         real_prompt = combine_history(prompt)
         # Add user message to chat history
-        st.session_state.messages.append({
-            'role': 'user',
-            'content': prompt,
-            'avatar': user_avator
-        })
+        st.session_state.messages.append({"role": "user", "content": prompt, "avatar": user_avator})
 
-        with st.chat_message('robot', avatar=robot_avator):
+        with st.chat_message("robot", avatar=robot_avator):
             message_placeholder = st.empty()
             for cur_response in generate_interactive(
                     model=model,
@@ -117,14 +112,10 @@ def main():
                     **asdict(generation_config),
             ):
                 # Display robot response in chat message container
-                message_placeholder.markdown(cur_response + '▌')
+                message_placeholder.markdown(cur_response + "▌")
             message_placeholder.markdown(cur_response)
         # Add robot response to chat history
-        st.session_state.messages.append({
-            'role': 'robot',
-            'content': cur_response,  # pylint: disable=undefined-loop-variable
-            'avatar': robot_avator,
-        })
+        st.session_state.messages.append({"role": "robot", "content": cur_response, "avatar": robot_avator})
         torch.cuda.empty_cache()
 
 
