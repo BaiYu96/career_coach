@@ -6,7 +6,7 @@
 
 我们的智能小助手名字叫职灵，你也可以叫她为灵灵。英文名字叫cc~
 
-下面是我们针对职灵设计的对话头像。
+下面是我们的团队成员凌感针对职灵设计的对话头像。
 
 整体是一个心，表示心理学。里面掏空一个有带有拟人化表情的小猫，赋予一些情感特征。表情代表so easy，这都不是事~
 
@@ -121,3 +121,29 @@ python start.py
       primaryClass={cs.CL}
 }
 ```
+
+# 致谢
+
+<p align="center">
+感谢 上海人工智能实验室的大力支持！
+</p>
+
+<p align="center">
+感谢 书生·浦语团队的大力支持！
+</p>
+
+<p align="center">
+感谢 OpenXLab 对项目部署的算力支持~
+</p>
+
+<p align="center">
+感谢 浦语小助手 对项目的支持~
+</p>
+
+<div align="center">
+<img src="assets/tks.png" width="200"/>
+  <div>&nbsp;</div>
+  <div align="center">
+  </div>
+</div>
+
