@@ -56,6 +56,10 @@ openXLab体验地址：https://openxlab.org.cn/apps/detail/baiyu/career_caoch
 * [ ] 整理对应的训练数据
 * [ ] 通过智能体框架进一步提高职场教练大模型能力
 
+## 架构图
+
+![career-coach.png](./assets/career-coach.png)
+
 ## 快速开始
 
 ```
